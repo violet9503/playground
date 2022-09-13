@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  background: rgb(247, 246, 243);
+  height: 100%;
+  max-height: 100%;
+  width: 20%;
+  color: rgba(55, 53, 47, 0.65);
+}
+
+.content-container {
+  display: flex;
+  flex-grow: 1;
+  padding: 100px 250px;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.content-editor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-title {
+  width: 100%;
+  font-size: 2em;
+  margin: 20px auto;
+  font-weight: 700;
+  border: 1px solid black;
+}
+
+.editor-content {
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid black;
+  overflow: visible;
+}
+
+.content-documents-list {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content-documents-list > div {
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.sidebar-newpage-container {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+  box-shadow: rgb(55 53 47 / 9%) 0px -1px 0px;
+  cursor: pointer;
+}
+
+.sidebar-newpage-container:hover {
+  background: rgba(55, 53, 47, 0.08);
+}
+
+.sidebar-pagelist {
+  width: 100%;
+  height: 60%;
+  margin-top: 150px;
+
+  /* x축  y축 */
+  overflow: hidden auto;
+}
+
+.sidebar-pagelist-header {
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 5px;
+  color: rgba(55, 53, 47, 0.5);
+  font-weight: 600;
+  padding: 0 20px;
+}
+
+.sidebar-page {
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-page:hover {
+  background-color: rgba(55, 53, 47, 0.08);
+}
+
+.sidebar-page > div > button {
+  cursor: pointer;
+  border: 0;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.sidebar-page > div > button:hover {
+  background-color: white;
+}
+
+.sidebar-page-container {
+  padding-left: 15px;
+}
+
+.sidebar-page.selected {
+  background: rgba(55, 53, 47, 0.15);
+}
