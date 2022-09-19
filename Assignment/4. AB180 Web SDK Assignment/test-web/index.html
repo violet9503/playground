@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="../build/index.js"></script>
+        <script>
+            assignmentSDK.init()
+        </script>
+        <style>
+            button {
+                display: block;
+                width: 200px;
+                height: 50px;
+                margin: 10px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function openOrganic() {
+                assignmentSDK.trackEvent('organic_open').then(function () {
+                    location.replace('http://localhost/organic_open')
+                })
+            }
+            
+            function openAttributed1() {
+                assignmentSDK.trackEvent('attributed_open_1').then(function () {
+                    location.replace('http://localhost/attributed_open_1?utm_source=aaa&utm_campaign=bbb')
+                })
+            }
+
+            function openAttributed2() {
+                assignmentSDK.trackEvent('attributed_open_2').then(function () {
+                    location.replace('http://localhost/attributed_open_2?short_id=aaa')
+                })
+            }
+
+            function trackEvent(name) {
+                assignmentSDK.trackEvent(name)
+            }
+        </script>
+        <button onclick="openOrganic()">organic_open</button>
+        <button onclick="openAttributed1()">attributed_open_1</button>
+        <button onclick="openAttributed2()">attributed_open_2</button>
+        <button onclick="trackEvent('1')">event_1</button>
+        <button onclick="trackEvent('2')">event_2</button>
+        <button onclick="trackEvent('3')">event_3</button>
+    </body>
+</html>

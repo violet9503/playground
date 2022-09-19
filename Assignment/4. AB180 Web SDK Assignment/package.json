@@ -1,0 +1,31 @@
+{
+    "name": "airbridge-web-sdk-assignment",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "ts-node -T script/build.ts",
+        "serve": "ts-node -T script/serve.ts",
+        "check-type": "tsc --noEmit source/**/*.ts",
+        "test": "npm run test-unit",
+        "test-unit": "jest --config option/jest.option.ts",
+        "test-web": "npm run serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ab180/airbridge-web-sdk-assignment.git"
+    },
+    "author": "ab180",
+    "bugs": {
+        "url": "https://github.com/ab180/airbridge-web-sdk-assignment/issues"
+    },
+    "homepage": "https://github.com/ab180/airbridge-web-sdk-assignment#readme",
+    "devDependencies": {
+        "@swc/core": "^1.2.136",
+        "@swc/jest": "^0.2.17",
+        "@types/jest": "^27.4.0",
+        "esbuild": "^0.14.18",
+        "jest": "^27.4.7",
+        "serve-handler": "^6.1.3",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5"
+    }
+}
