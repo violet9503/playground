@@ -6,8 +6,8 @@
 
 - 빌드환경: esbuild (`npm run build`)
 - 테스트환경
-    - 유닛테스트: jest (`npm run test-unit`)
-    - 로컬테스트: http + serve-handler (`npm run test-web`)
+  - 유닛테스트: jest (`npm run test-unit`)
+  - 로컬테스트: http + serve-handler (`npm run test-web`)
 - 타입체크: typescript (`npm run check-type`)
 
 ## 요구사항
@@ -21,45 +21,42 @@
 SDK 의 trackEvent 함수는 호출되었을 때 서버에 이벤트 데이터를 전달해야 합니다.
 
 ```typescript
-const trackEvent: (
-    category: string,
-    attribute?: Record<string, string>,
-) => Promise<void>
+const trackEvent: (category: string, attribute?: Record<string, string>) => Promise<void>;
 ```
 
 - Endpoint: https://ab180-sdk-coding-assignment.vercel.app/api/track-event
 - Method: POST
 - Headers
-    - Content-Type: application/json
+  - Content-Type: application/json
 - Body
-    - category: string / required
-        - 함수의 category 파라미터를 사용합니다.
-    - action: string / optional
-        - 함수의 attribute 파라미터를 JSON stringify 해서 사용합니다.
+  - category: string / required
+    - 함수의 category 파라미터를 사용합니다.
+  - action: string / optional
+    - 함수의 attribute 파라미터를 JSON stringify 해서 사용합니다.
 - Example
-    ```
-    curl --request POST \
-        --url https://ab180-sdk-coding-assignment.vercel.app/api/track-event \
-        --header 'content-type: application/json' \
-        --data '{"category": "main_view", "action": "{}"}'
-    ```
+  ```
+  curl --request POST \
+      --url https://ab180-sdk-coding-assignment.vercel.app/api/track-event \
+      --header 'content-type: application/json' \
+      --data '{"category": "main_view", "action": "{}"}'
+  ```
 
 ### 마케팅 성과 분석을 하는 기능
 
 SDK 의 init 함수는 웹피이지 로딩마다 호출됩니다. 이때 URL 의 Query parameter 에서 광고 데이터를 수집하고 각 이벤트에 어떤 광고의 성과인지 기록해야 합니다.
 
 ```typescript
-const init: () => Promise<void>
+const init: () => Promise<void>;
 ```
 
 - 광고 데이터 수집
-    - URL 에 `utm_source=aaa&utm_campaign=bbb` Query parameter 가 존재하면 광고 데이터가 `{"channel":"aaa","campaign":"bbb"}` 라고 판단합니다.
-    - URL 에 `short_id=aaa` Query parameter 가 존재하면 광고 데이터가 `{"shortID": "aaa"}` 라고 판단합니다.
-    - short_id 광고 데이터가 utm_source & utm_campaign 광고 데이터보다 우선순위가 높습니다.
-    - 광고 데이터는 쿠키에 저장되어야 하고 서브도메인간 공유가 되어야 하며 최대 1일간 저장합니다.
+  - URL 에 `utm_source=aaa&utm_campaign=bbb` Query parameter 가 존재하면 광고 데이터가 `{"channel":"aaa","campaign":"bbb"}` 라고 판단합니다.
+  - URL 에 `short_id=aaa` Query parameter 가 존재하면 광고 데이터가 `{"shortID": "aaa"}` 라고 판단합니다.
+  - short_id 광고 데이터가 utm_source & utm_campaign 광고 데이터보다 우선순위가 높습니다.
+  - 광고 데이터는 쿠키에 저장되어야 하고 서브도메인간 공유가 되어야 하며 최대 1일간 저장합니다.
 - 각 이벤트에 어떤 광고의 성과인지 기록
-    - 수집된 광고 데이터는 모든 trackEvent 함수 호출마다 attribute 에 추가되어야 합니다.
-    - key 는 `attribution`, value 는 `광고 데이터 object` 로 추가합니다.
+  - 수집된 광고 데이터는 모든 trackEvent 함수 호출마다 attribute 에 추가되어야 합니다.
+  - key 는 `attribution`, value 는 `광고 데이터 object` 로 추가합니다.
 
 ### SDK 사용 편의성
 
