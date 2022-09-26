@@ -1,27 +1,23 @@
+import { fetchTrackEvent } from "../api/api";
+
 interface AssignmentSDK {
-    init: () => Promise<void>
-    trackEvent: (
-        category: string,
-        attribute?: Record<string, string>,
-    ) => Promise<void>
+  init: () => Promise<void>;
+  trackEvent: (category: string, attribute?: Record<string, string>) => Promise<void>;
 }
 
 const AssignmentSDK = (): AssignmentSDK => {
-    const init = async () => {
-        throw Error('not implemented')
-    }
+  const init = async () => {
+    throw Error("not implemented");
+  };
 
-    const trackEvent = async (
-        category: string,
-        attribute?: Record<string, string>,
-    ) => {
-        throw Error('not implemented')
-    }
+  const trackEvent = async (category: string, attribute?: Record<string, string>) => {
+    fetchTrackEvent(category, JSON.stringify(attribute));
+  };
 
-    return {
-        init,
-        trackEvent,
-    }
-}
+  return {
+    init,
+    trackEvent,
+  };
+};
 
-export { AssignmentSDK }
+export { AssignmentSDK };
